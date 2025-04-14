@@ -18,7 +18,7 @@
     <div class="hill hill-left"></div>
     <div class="hill hill-right"></div>
 
-    <!-- Stars  -->
+    <!-- Stars (optional) -->
     <div class="stars"></div>
 
     <!-- Heading -->
@@ -28,16 +28,6 @@
     <!-- Buttons -->
     <a class="btn" href="#" onclick="playClickAndGo(event, 'rules.html')">NOMINATION RULES</a><br>
     <a class="btn" href="#" onclick="playClickAndGo(event, 'https://forms.gle/GuBy6kPbwzkGQxQg6')">ENTER THE BOOTH</a>
-
-    <!-- Retro Message -->
-    <p id="retroMessage" class="retro-msg">
-      🚀 Click 'Play Music' to launch into a retro adventure! 🎶
-    </p>
-
-    <!-- Play Music Button -->
-    <button id="playMusicBtn" class="play-btn" onclick="playMusic()">
-      ▶️ Play Music
-    </button>
   </div>
 
   <div class="ground"></div>
@@ -54,6 +44,16 @@
   <div class="platform5"></div>
   <div class="platform6"></div>
   <div class="platform7"></div>
+
+  <!-- Retro Message -->
+  <p id="retroMessage" class="retro-msg">
+    🚀 Click 'Play Music' to launch into a retro adventure! 🎶
+  </p>
+
+  <!-- Play Music Button -->
+  <button id="playMusicBtn" class="play-btn">
+    ▶️ Play Music
+  </button>
 
   <!-- Click Sound -->
   <audio id="clickSound" src="assets/click.wav" preload="auto"></audio>
@@ -77,18 +77,15 @@
       }, 300);
     }
 
-    function playMusic() {
+    window.addEventListener('load', () => {
       const music = document.getElementById('bgMusic');
-      const message = document.getElementById('retroMessage');
-      const button = document.getElementById('playMusicBtn');
-
       music.play().catch(err => {
         console.log("Autoplay might be blocked, trying again after user interaction...");
+        document.getElementById('playMusicBtn').addEventListener('click', () => {
+          music.play().catch(err => console.log("Audio not played:", err));
+        });
       });
-
-      message.style.display = 'none';
-      button.style.display = 'none';
-    }
+    });
   </script>
 
 </body>
