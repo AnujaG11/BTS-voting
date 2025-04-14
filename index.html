@@ -75,7 +75,7 @@
       music.play().catch(err => {
         console.log("Autoplay might be blocked, trying again after user interaction...");
          music.play()
-        document.addEventListener('click', () => music.play(), { once: true });
+        document.addEventListener('mousemove', () => music.play(), { once: true });
       });
     });
   </script>
