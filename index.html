@@ -82,32 +82,27 @@
       });
     });*/
 
-
-  window.addEventListener('load', () => {
+ window.addEventListener('load', () => {
     const music = document.getElementById('bgMusic');
-    const playBtn = document.getElementById('playBtn');
 
-    // Function to handle the music playing
-    const handlePlayMusic = () => {
+    // Function to handle mouse movement
+    function handleMouseMove() {
+      // Unmute and play music
       music.muted = false;
       music.play().catch(err => {
         console.error("Failed to play music:", err);
       });
-      playBtn.style.display = 'none'; // Hide the button after the first click
-    };
 
-    // Try autoplay first
+      // Remove the event listener after the first interaction
+      document.removeEventListener('mousemove', handleMouseMove);
+    }
+
+    // Attempt to play the music automatically
     music.play().catch(err => {
       console.log("Autoplay blocked. Waiting for user interaction...");
 
-      // Show the hidden "Start Music" button after the first mouse move
-      document.addEventListener('mousemove', () => {
-        playBtn.style.display = 'inline-block'; // Show the button
-        document.removeEventListener('mousemove', arguments.callee); // Remove listener to avoid multiple triggers
-      });
-
-      // When the button is clicked, play the music
-      playBtn.addEventListener('click', handlePlayMusic);
+      // Add the mousemove event listener
+      document.addEventListener('mousemove', handleMouseMove);
     });
   });
   </script>
