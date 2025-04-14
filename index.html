@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BTS Polling Booth</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -17,7 +18,7 @@
     <div class="hill hill-left"></div>
     <div class="hill hill-right"></div>
 
-    <!-- Stars (optional) -->
+    <!-- Stars -->
     <div class="stars"></div>
 
     <!-- Heading -->
@@ -27,6 +28,16 @@
     <!-- Buttons -->
     <a class="btn" href="#" onclick="playClickAndGo(event, 'rules.html')">NOMINATION RULES</a><br>
     <a class="btn" href="#" onclick="playClickAndGo(event, 'https://forms.gle/GuBy6kPbwzkGQxQg6')">ENTER THE BOOTH</a>
+
+    <!-- Retro Message -->
+    <p id="retroMessage" class="retro-msg">
+      🚀 Click 'Play Music' to launch into a retro adventure! 🎶
+    </p>
+
+    <!-- Play Music Button -->
+    <button id="playMusicBtn" class="play-btn">
+      ▶️ Play Music
+    </button>
   </div>
 
   <div class="ground"></div>
@@ -44,16 +55,12 @@
   <div class="platform6"></div>
   <div class="platform7"></div>
 
-    <button id="playBtn" style="display:none;">Start Music</button>
-  
-
   <!-- Click Sound -->
   <audio id="clickSound" src="assets/click.wav" preload="auto"></audio>
 
   <!-- Background Music -->
-  <!--<audio id="bgMusic" src="assets/marioMusic.mp3" autoplay loop preload="auto" type="audio/mpeg">-->
-  <audio  id="bgMusic" controls autoplay>
-    <source src="assets/marioMusic.mp3" type="audio/mpeg">
+  <audio id="bgMusic" src="assets/marioMusic.mp3" loop preload="auto">
+    Your browser does not support the audio element.
   </audio>
 
   <script>
@@ -72,12 +79,22 @@
       }, 300);
     }
 
-    // Music Autoplay Fallback
-    window.addEventListener('load', () => {
+    // Wait for the DOM to fully load
+    window.addEventListener('DOMContentLoaded', () => {
+      const playBtn = document.getElementById('playMusicBtn');
       const music = document.getElementById('bgMusic');
-      music.play().catch(err => {
-        console.log("Autoplay might be blocked, trying again after user interaction...");
-        document.addEventListener('click', () => music.play(), { once: true });
+      const message = document.getElementById('retroMessage');
+
+      // Add click event listener to the play button
+      playBtn.addEventListener('click', () => {
+        // Play the background music
+        music.play().catch(err => {
+          console.error("Error playing music:", err);
+        });
+
+        // Update the message
+        message.textContent = "🎶 Enjoy the retro tunes! 🎧";
+        message.style.color = "#00ff00";
       });
     });
   </script>
