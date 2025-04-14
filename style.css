@@ -250,3 +250,31 @@ border: 4px solid #000;
 box-shadow: inset 0 0 4px #000;
 z-index: 2;
 }
+/* Retro Message Styling */
+.retro-msg {
+  font-size: 18px;
+  color: #ffcc00;
+  text-shadow: 2px 2px #000;
+  margin-top: 20px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+/* Play Music Button Styling */
+.play-btn {
+  margin-top: 20px;
+  padding: 14px 28px;
+  background-color: #ffcc00;
+  color: #000;
+  border: 3px solid #000;
+  font-size: 16px;
+  font-family: 'Press Start 2P', cursive;
+  box-shadow: 4px 4px 0 #000;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.play-btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #000;
+}
+
