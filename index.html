@@ -27,6 +27,16 @@
     <!-- Buttons -->
     <a class="btn" href="#" onclick="playClickAndGo(event, 'rules.html')">NOMINATION RULES</a><br>
     <a class="btn" href="#" onclick="playClickAndGo(event, 'https://forms.gle/GuBy6kPbwzkGQxQg6')">ENTER THE BOOTH</a>
+
+    <!-- Retro Message -->
+    <p id="retroMessage" class="retro-msg">
+      🚀 Click 'Play Music' to launch into a retro adventure! 🎶
+    </p>
+
+    <!-- Play Music Button -->
+    <button id="playMusicBtn" class="play-btn">
+      ▶️ Play Music
+    </button>
   </div>
 
   <div class="ground"></div>
@@ -73,6 +83,18 @@
         console.log("Autoplay might be blocked, trying again after user interaction...");
         document.addEventListener('click', () => music.play(), { once: true });
       });
+
+      // Music toggle
+      const playMusicBtn = document.getElementById('playMusicBtn');
+      if (playMusicBtn) {
+        playMusicBtn.addEventListener('click', () => {
+          if (music.paused) {
+            music.play();
+          } else {
+            music.pause();
+          }
+        });
+      }
     });
   </script>
 
