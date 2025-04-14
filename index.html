@@ -77,7 +77,7 @@
       const music = document.getElementById('bgMusic');
       music.play().catch(err => {
         console.log("Autoplay might be blocked, trying again after user interaction...");
-        document.addEventListener('mousemove', () => music.play(), { once: true });
+        document.addEventListener('click', () => music.play(), { once: true });
       });
     });
   </script>
