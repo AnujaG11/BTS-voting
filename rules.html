@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Voting Rules</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #7ec0ee;
+      font-family: 'Press Start 2P', cursive;
+      text-align: center;
+    }
+
+    
+
+    .ground {
+      height: 23vh;
+      background: linear-gradient(#228b22, #3e1f0d);
+    }
+
+    .rules-box {
+      background: #fff8dc;
+      color: #222;
+      margin: 50px auto;
+      padding: 30px;
+      width: 80%;
+      max-width: 700px;
+      border: 5px solid #000;
+      box-shadow: 8px 8px 0px #000;
+      text-align: left;
+    }
+
+    h1 {
+      color: #ffcc00;
+      font-size: 24px;
+      text-shadow: 2px 2px #000;
+      margin-top: 40px;
+    }
+
+    .emoji {
+      font-size: 18px;
+    }
+
+    ul {
+      list-style-type: square;
+      padding-left: 40px;
+      font-size: 14px;
+    }
+
+    p, li {
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 15px 30px;
+      background: #ffcc00;
+      color: #000;
+      border: 3px solid #000;
+      text-decoration: none;
+      font-size: 14px;
+      box-shadow: 4px 4px 0px #000;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px #000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sky">
+    <h1>📝 Voting Rules</h1>
+
+    <div class="rules-box">
+    <b> <p class="emoji">🌟Let’s Celebrate the Stars Among Us!🌟</p></b> 
+      
+      <p>
+        We’re excited to kick off the nominations for our Office fun Awards! 
+        Take a moment to recognize one amazing colleague in each category — someone who 
+        truly makes a difference.
+      </p>
+    
+      <p class="emoji">📜 Nomination Guidelines:</p>
+      <ul>
+        <li><strong>🚫 No nominating teammates</strong> who report to the same manager as you.</li>
+        <li><strong>📝 Only one submission per person</strong> — make it count!</li>
+        <li><strong>🙅 Self-nominations are not allowed.</strong></li>
+        <li><strong>✍️ Please format names like this: e.g., Jane Doe.</strong></li>
+        <li><strong>🏅 The top 5 nominees per category</strong> will move forward to the final voting round.</li>
+        <li><strong>⏰ Deadline:</strong> Submissions close <strong>Friday, 18-April-2025</strong></li>
+      </ul>
+    
+      <p>
+        Let’s keep the vibe fun, inclusive, and all about uplifting the amazing people we work with! 😊
+      </p>
+    </div>
+    
+
+    <a href="index.html" class="btn" onclick="playClickAndGo(event)">← Back to Booth</a>
+
+    <!-- Click Sound -->
+    <audio id="clickSound" src="assets/click.wav" preload="auto"></audio>
+    
+    <script>
+      function playClickAndGo(e) {
+        e.preventDefault(); // prevent instant navigation
+        const sound = document.getElementById('clickSound');
+        if (sound) {
+          sound.pause();
+          sound.currentTime = 0;
+          sound.play().catch(err => console.log("Sound error:", err));
+        }
+    
+        // Navigate after short delay
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 400); // 0.4s delay to let sound play
+      }
+    </script>
+    
+  </div>
+
+  <div class="ground"></div>
+
+</body>
+</html>

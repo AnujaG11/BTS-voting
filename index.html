@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BTS Polling Booth</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="sky">
+    <!-- Clouds -->
+    <img src="assets/cloud.png" class="cloud cloud-left" alt="cloud">
+    <img src="assets/cloud.png" class="cloud cloud-right" alt="cloud">
+
+    <!-- Hills -->
+    <div class="hill hill-left"></div>
+    <div class="hill hill-right"></div>
+
+    <!-- Stars (optional) -->
+    <div class="stars"></div>
+
+    <!-- Heading -->
+    <h1>WELCOME TO <br>BTS POLLING BOOTH</h1>
+    <p>Click below to go to the rules 📜</p>
+
+    <!-- Buttons -->
+    <a class="btn" href="#" onclick="playClickAndGo(event, 'rules.html')">NOMINATION RULES</a><br>
+    <a class="btn" href="#" onclick="playClickAndGo(event, 'https://forms.gle/GuBy6kPbwzkGQxQg6')">ENTER THE BOOTH</a>
+  </div>
+
+  <div class="ground"></div>
+
+  <!-- Mario character -->
+  <img src="assets/mario.png" class="mario" alt="Mario">
+
+  <!-- Platforms -->
+  <div class="platform0"></div>
+  <div class="platform"></div>
+  <div class="platform2"></div>
+  <div class="platform3"></div>
+  <div class="platform4"></div>
+  <div class="platform5"></div>
+  <div class="platform6"></div>
+  <div class="platform7"></div>
+
+  <!-- Click Sound -->
+  <audio id="clickSound" src="assets/click.wav" preload="auto"></audio>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" src="assets/marioMusic.mp3" autoplay loop preload="auto"></audio>
+
+  <script>
+    function playClickAndGo(event, destination) {
+      event.preventDefault(); // Prevent default anchor behavior
+
+      const sound = document.getElementById('clickSound');
+      if (sound) {
+        sound.pause();
+        sound.currentTime = 0;
+        sound.play().catch(err => console.log("Audio not played:", err));
+      }
+
+      setTimeout(() => {
+        window.location.href = destination;
+      }, 300);
+    }
+
+    // Music Autoplay Fallback
+    window.addEventListener('load', () => {
+      const music = document.getElementById('bgMusic');
+      music.play().catch(err => {
+        console.log("Autoplay might be blocked, trying again after user interaction...");
+        document.addEventListener('click', () => music.play(), { once: true });
+      });
+    });
+  </script>
+
+</body>
+</html>
