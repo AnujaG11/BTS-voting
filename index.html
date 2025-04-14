@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BTS Polling Booth</title>
-  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -18,7 +18,7 @@
     <div class="hill hill-left"></div>
     <div class="hill hill-right"></div>
 
-    <!-- Stars -->
+    <!-- Stars  -->
     <div class="stars"></div>
 
     <!-- Heading -->
@@ -35,7 +35,7 @@
     </p>
 
     <!-- Play Music Button -->
-    <button id="playMusicBtn" class="play-btn">
+    <button id="playMusicBtn" class="play-btn" onclick="playMusic()">
       ▶️ Play Music
     </button>
   </div>
@@ -59,9 +59,7 @@
   <audio id="clickSound" src="assets/click.wav" preload="auto"></audio>
 
   <!-- Background Music -->
-  <audio id="bgMusic" src="assets/marioMusic.mp3" loop preload="auto">
-    Your browser does not support the audio element.
-  </audio>
+  <audio id="bgMusic" src="assets/marioMusic.mp3" loop preload="auto"></audio>
 
   <script>
     function playClickAndGo(event, destination) {
@@ -79,24 +77,18 @@
       }, 300);
     }
 
-    // Wait for the DOM to fully load
-    window.addEventListener('DOMContentLoaded', () => {
-      const playBtn = document.getElementById('playMusicBtn');
+    function playMusic() {
       const music = document.getElementById('bgMusic');
       const message = document.getElementById('retroMessage');
+      const button = document.getElementById('playMusicBtn');
 
-      // Add click event listener to the play button
-      playBtn.addEventListener('click', () => {
-        // Play the background music
-        music.play().catch(err => {
-          console.error("Error playing music:", err);
-        });
-
-        // Update the message
-        message.textContent = "🎶 Enjoy the retro tunes! 🎧";
-        message.style.color = "#00ff00";
+      music.play().catch(err => {
+        console.log("Autoplay might be blocked, trying again after user interaction...");
       });
-    });
+
+      message.style.display = 'none';
+      button.style.display = 'none';
+    }
   </script>
 
 </body>
